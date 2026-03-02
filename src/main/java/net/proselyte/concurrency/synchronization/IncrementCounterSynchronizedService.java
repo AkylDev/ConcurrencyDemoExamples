@@ -36,4 +36,10 @@ public class IncrementCounterSynchronizedService {
   private static synchronized void increment() {
     counter++;
   }
+
+//  private static void increment() {
+//    synchronized (IncrementCounterSynchronizedBlockService.class) {
+//      counter++;
+//    }
+//  }
 }
