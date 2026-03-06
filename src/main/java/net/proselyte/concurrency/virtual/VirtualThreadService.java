@@ -8,7 +8,7 @@ public class VirtualThreadService {
 
     try (var executor = Executors.newVirtualThreadPerTaskExecutor()) {
 
-      for (int i = 0; i < 10_000; i++) {
+      for (int i = 0; i < 100_000; i++) {
         int taskId = i;
 
         executor.submit(() -> {
@@ -16,7 +16,7 @@ public class VirtualThreadService {
               " running in " + Thread.currentThread());
 
           try {
-            Thread.sleep(1000);
+            Thread.sleep(1000);// имитация запроса к БД
           } catch (InterruptedException e) {
             throw new RuntimeException(e);
           }
