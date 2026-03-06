@@ -9,13 +9,13 @@ public class CollectionUnsafeService {
     List<Integer> threadUnsafeList = new ArrayList<>();
 
     Thread t1 = new Thread(() -> {
-      for (int i = 0; i < 1_000_000; i++) {
+      for (int i = 0; i < 1000; i++) {
         threadUnsafeList.add(i);
       }
     });
 
     Thread t2 = new Thread(() -> {
-      for (int i = 0; i < 1_000_000; i++) {
+      for (int i = 0; i < 1000; i++) {
         threadUnsafeList.add(i);
       }
     });

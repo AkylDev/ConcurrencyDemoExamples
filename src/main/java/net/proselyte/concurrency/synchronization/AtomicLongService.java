@@ -8,13 +8,13 @@ public class AtomicLongService {
 
   public static void main(String[] args) {
     Thread t1 = new Thread(() -> {
-      for (int i = 0; i < 1_000_000; i++) {
+      for (int i = 0; i < 10000; i++) {
         incrementAtomicLong();
       }
     });
 
     Thread t2 = new Thread(() -> {
-      for (int i = 0; i < 1_000_000; i++) {
+      for (int i = 0; i < 10000; i++) {
         incrementAtomicLong();
       }
     });

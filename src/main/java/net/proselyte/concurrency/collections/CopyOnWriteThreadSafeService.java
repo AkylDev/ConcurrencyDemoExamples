@@ -1,23 +1,22 @@
 package net.proselyte.concurrency.collections;
 
-import java.util.ArrayList;
-import java.util.Collections;
 import java.util.List;
+import java.util.concurrent.CopyOnWriteArrayList;
 
-public class CollectionThreadSafeService {
+public class CopyOnWriteThreadSafeService {
 
   public static void main(String[] args) {
-    List<Integer> threadUnsafeList = Collections.synchronizedList(new ArrayList<>());
+    List<Integer> threadSafeList = new CopyOnWriteArrayList<>();
 
     Thread t1 = new Thread(() -> {
       for (int i = 0; i < 1000; i++) {
-        threadUnsafeList.add(i);
+        threadSafeList.add(i);
       }
     });
 
     Thread t2 = new Thread(() -> {
       for (int i = 0; i < 1000; i++) {
-        threadUnsafeList.add(i);
+        threadSafeList.add(i);
       }
     });
 
@@ -31,6 +30,6 @@ public class CollectionThreadSafeService {
       throw new RuntimeException(e);
     }
 
-    System.out.println("threadUnsafeList size: " + threadUnsafeList.size());
+    System.out.println("threadSafeList size: " + threadSafeList.size());
   }
-}
+}//копия массива -> вносит изменение в копию -> заменяет старый массив новым
